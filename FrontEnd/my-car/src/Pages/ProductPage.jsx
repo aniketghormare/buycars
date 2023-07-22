@@ -208,22 +208,22 @@ export default ProductPage
 const DIV = styled.div`
     height: auto;
     width: 100%;
-    border: 1px solid red;
+    border: 1px solid white;
     .product{
         height: auto;
         width: 100%;
-        border: 1px solid green;
+        border: 1px solid white;
         display: flex;
     }
     .sidebar{
         height: 100%;
         width:20%;
-        border: 1px solid pink;
+        border: 1px solid white;
     }
     .productsdata{
         height: 100%;
         width:80%;
-        border: 1px solid blue;
+        border: 1px solid white;
     }
     .card{
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
