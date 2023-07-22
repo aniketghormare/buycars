@@ -20,11 +20,21 @@ import {
     VisuallyHidden,
     List,
     ListItem,
+    Table,
+    Thead,
+    Tbody,
+    Tfoot,
+    Tr,
+    Th,
+    Td,
+    TableCaption,
+    TableContainer
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { MdLocalShipping } from 'react-icons/md';
 import { inventeryget } from '../redux/Productreducer/action';
 import { useNavigate } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 export default function SingleProduct() {
     const [product, setproduct] = useState({})
@@ -40,21 +50,21 @@ export default function SingleProduct() {
     })
     const getinventery = () => {
         dispatch(inventeryget).then((res) => {
-           // setnewdata(res.data)
-              res.data.map((el,index)=>{
-                if(el.model==single.modelname){
+            // setnewdata(res.data)
+            res.data.map((el, index) => {
+                if (el.model == single.modelname) {
                     setinventerydata(el)
 
                 }
-              })
-            
-                // newdata.map((el, index) => {
-                //     if (el.model == single.modelname) {
-                //         setinventerydata(el)
-        
-                //     }
-                // })
-            
+            })
+
+            // newdata.map((el, index) => {
+            //     if (el.model == single.modelname) {
+            //         setinventerydata(el)
+
+            //     }
+            // })
+
 
         })
     }
@@ -77,18 +87,18 @@ export default function SingleProduct() {
     useEffect(() => {
         setproduct(single)
     }, [])
-    
+
     console.log(product)
     console.log(inventery)
     console.log(inventerydata)
     return (
-        <Container maxW={'7xl'}>
+        <Container maxW={'7xl'} >
             <SimpleGrid
                 columns={{ base: 1, lg: 2 }}
                 spacing={{ base: 8, md: 10 }}
-                py={{ base: 18, md: 24 }}>
-                <Flex>
-                    <Image
+                py={{ base: 18, md: 24 }} display={"grid"}>
+                <Flex style={{ margin: "auto" }}>
+                    {/* <Image
                         rounded={'md'}
                         alt={'product image'}
                         width="80%"
@@ -99,15 +109,23 @@ export default function SingleProduct() {
                         align={'center'}
                         w={'100%'}
                         h={{ base: '100%', sm: '400px', lg: '500px' }}
-                    />
+                    /> */}
+                    <img width={"100%"} height={"300px"} src={product.image} alt="" style={{ marginTop: "10px" }} />
                 </Flex>
                 <Stack spacing={{ base: 6, md: 10 }}>
-                    <Box as={'header'}>
+                    {/*  */}
+
+
+
+                    {/*  */}
+                    <Box as={'header'} style={{border:"1px solid black",textAlign:"center"}}>
                         <Heading
                             lineHeight={1.1}
                             fontWeight={600}
-                            fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-                            Car Model - {product.modelname}
+                            fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }} color={"red"}>
+                            Car Model - {product.modelname},
+
+
                         </Heading>
                         <Text
                             color={useColorModeValue('gray.900', 'gray.400')}
@@ -121,12 +139,16 @@ export default function SingleProduct() {
                             color={useColorModeValue('gray.900', 'gray.400')}
 
                             fontSize={'2xl'} fontWeight={'bold'}>
+                                 
+                                 Selling-Price - <Text as={"mark"}>{Math.floor(product.price * 70 / 100)} LPA</Text>
 
-                            Selling-Price - {Math.floor(product.price * 70 / 100)} LPA
-
+                                 
+                           
                         </Text>
 
                     </Box>
+                 
+
 
                     <Stack
                         spacing={{ base: 4, sm: 6 }}
@@ -141,15 +163,16 @@ export default function SingleProduct() {
 
                         </VStack>
                         <Box style={{ display: "flex", justifyContent: "space-around", textAlign: "center" }}>
-                            <Box>
+                            <Box style={{border:"1px solid black",textAlign:"justify",padding:"10px"}}>
                                 <Text
                                     fontSize={{ base: '16px', lg: '18px' }}
-                                    color={useColorModeValue('yellow.500', 'yellow.300')}
+                                    // color={useColorModeValue('yellow.500', 'yellow.300')}
                                     fontWeight={'500'}
                                     textTransform={'uppercase'}
-                                    mb={'4'}>
+                                    mb={'4'} textAlign={"center"} color={"red"}>
                                     New Car Features
                                 </Text>
+                                <hr />
 
                                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                                     <List spacing={2}>
@@ -164,15 +187,17 @@ export default function SingleProduct() {
                                     </List>
                                 </SimpleGrid>
                             </Box>
-                            <Box>
+                            <Box style={{border:"1px solid black",textAlign:"justify",padding:"10px"}}>
                                 <Text
                                     fontSize={{ base: '16px', lg: '18px' }}
-                                    color={useColorModeValue('yellow.500', 'yellow.300')}
+                                    // color={useColorModeValue('yellow.500', 'yellow.300')}
                                     fontWeight={'500'}
                                     textTransform={'uppercase'}
-                                    mb={'4'}>
+                                    color={"red"}
+                                    mb={'4'} textAlign={"center"}>
                                     INVENTERY CAR DETAILS
                                 </Text>
+                                <hr />
                                 {
                                     inventerydata.model ? <List spacing={2}>
                                         <ListItem>
@@ -209,7 +234,10 @@ export default function SingleProduct() {
                                             <Text as={'span'} fontWeight={'bold'}>
                                                 Registration Place:
                                             </Text>{' '}
-                                            {inventerydata.Registration_Place}
+                                           
+                                                {inventerydata.Registration_Place}
+                                          
+
                                         </ListItem>
                                         <ListItem>
                                             <Text as={'span'} fontWeight={'bold'}>
@@ -232,7 +260,7 @@ export default function SingleProduct() {
                         mt={8}
                         size={'lg'}
                         py={'7'}
-                        bg={"black"}
+                        bg={"teal"}
                         onClick={handlebuycar}
                         color={useColorModeValue('white', 'gray.900')}
                         textTransform={'uppercase'}
@@ -252,3 +280,9 @@ export default function SingleProduct() {
         </Container>
     );
 }
+
+
+
+
+
+

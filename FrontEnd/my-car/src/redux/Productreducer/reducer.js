@@ -1,4 +1,4 @@
-import { DEALER, ISERROR, ISLOADING, PRODUCT_GET_INVENTERY, PRODUCT_GET_SUCC, SET_FILTER_DATA, SET_SINGLE_PRODUCT } from "./actionType"
+import { DEALER, ISERROR, ISLOADING, LOGOUT, PRODUCT_GET_INVENTERY, PRODUCT_GET_SUCC, SET_ASC_DATA, SET_FILTER_DATA, SET_SINGLE_PRODUCT } from "./actionType"
 
 
 const init = {
@@ -6,7 +6,7 @@ const init = {
     isError: false,
     products: [],
     Inventery: [],
-    SingleProduct: {},
+    SingleProduct: "",
     dealer: false
 }
 export const reducer = (state = init, { type, payload }) => {
@@ -19,12 +19,15 @@ export const reducer = (state = init, { type, payload }) => {
             return { ...state, isLoading: false, Inventery: payload }
         case SET_FILTER_DATA:
             return { ...state, isLoading: false, products: payload }
+        case SET_ASC_DATA:
+            return { ...state, isLoading: false, products: payload }
         case SET_SINGLE_PRODUCT:
             return { ...state, isLoading: false, SingleProduct: payload }
         case ISERROR:
             return { ...state, isLoading: false, isError: true }
         case DEALER:
             return { ...state, isLoading: false, dealer: !state.dealer }
+
         default:
             return state
     }
