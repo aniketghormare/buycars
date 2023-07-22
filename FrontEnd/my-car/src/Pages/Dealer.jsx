@@ -173,7 +173,7 @@ const Dealer = () => {
     return (
         <DIV>
 
-            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <BIG style={{ display: "flex", justifyContent: "space-evenly" }}>
                 <form action="" onSubmit={handlesubmit}>
                     <h1>Inventery Add</h1>
                     <br />
@@ -258,7 +258,7 @@ const Dealer = () => {
                     </form>
                 }
 
-            </div>
+            </BIG>
 
             <div style={{ height: "auto", width: "100%", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "5px" }}>
                 {
@@ -270,7 +270,7 @@ const Dealer = () => {
 
 
 
-                                <div style={{ height: "auto", width: "300px", border: "1px solid black", marginTop: "5px" }}>
+                                <BIG style={{ height: "auto", width: "300px", border: "1px solid teal", marginTop: "5px" }}>
                                     <p>Major_Scratches - {el.Major_Scratches}</p>
                                     <p>Number_of_accidents_reported - {el.Number_of_accidents_reported}</p>
                                     <p>Number_of_previous_buyers - {el.Number_of_previous_buyers}</p>
@@ -286,7 +286,7 @@ const Dealer = () => {
 
                                         Edit</button>
 
-                                </div>
+                                </BIG>
 
                             </>
                         )
@@ -307,6 +307,10 @@ height: 30px;
     button{
         height: 30px;
     }
+`
+
+const BIG=styled.div`
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 `
 
 
